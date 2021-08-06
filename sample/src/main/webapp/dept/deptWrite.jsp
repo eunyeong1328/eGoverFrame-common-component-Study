@@ -18,7 +18,8 @@ th,td{
 </head>
 
 <body>
-<from name="frm" method="post" action="">
+<form name="frm" method="post" action="deptWriteSave.do"> 
+<!-- action 데이터 전송 -->
 <table>
 	<tr>
 		<th>부서번호</th>
@@ -33,12 +34,11 @@ th,td{
 		<td><input type="text" name= "loc"></td>
 	</tr>
 	<tr>
-	
 		<th colspan="2">
-		<button type = "submit">저장</button>
+		<button type="submit">저장</button>
 		</th>
-		
 	</tr>
 </table>
+</form>
 </body>
 </html>

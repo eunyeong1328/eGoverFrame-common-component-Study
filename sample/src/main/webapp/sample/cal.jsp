@@ -10,9 +10,12 @@
 <body>
 <%
 	Calendar cal  = Calendar.getInstance(); //Ctrl+Space0
-	//안녕하세요
-
+	int y = cal.get(Calendar.YEAR);
+	int m = cal.get(Calendar.MONTH);
+	int d = cal.get(Calendar.DATE);
 %>
+
+<%=y %>년 <%=m+1 %>월<%=d %>일
 
 </body>
 </html>

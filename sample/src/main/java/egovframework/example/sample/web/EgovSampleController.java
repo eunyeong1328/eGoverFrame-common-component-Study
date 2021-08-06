@@ -74,11 +74,10 @@ public class EgovSampleController {
 		return "sample/text1";
 	}
 	
-	@RequestMapping(value = "/test2.do")
-	public String test2() {
-		return "sample/text1";
+	@RequestMapping(value = "/cal.do")
+	public String abc() {
+		return "sample/cal";
 	}
-
 	/**
 	 * 글 목록을 조회한다. (pageing)
 	 * @param searchVO - 조회할 정보가 담긴 SampleDefaultVO
