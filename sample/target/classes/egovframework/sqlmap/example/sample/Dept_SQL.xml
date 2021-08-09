@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DeptSpace"><!-- 태그<>,namespace은 고유해야 함 --> 
+														<!-- 자바에서 List의 개념과 같다. -->
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="deptVO" type="egovframework.example.sample.service.DeptVO"/>
+<!-- VO(데이터가 담을 공간) 경로설정 -->
+
+	<insert id = "deptDAO.InsertDept">
+		insert into test_dept(deptno,dname,loc) values (#deptno#,#dname#,#loc#)
+	</insert>
+	<!-- 출력된 내용이 결과값을"egovMap"에 담아서 java로 보낸다  -->
+	<select id = "deptDAO.SelectDeptList" resultClass = "egovMap"> 
+		select deptno,dname,loc from test_dept
+	</select>
+	<!-- 출력된 내용이 결과값을 "deptVO"에 담아서 java로 보낸다  -->
+	<select id = "deptDAO.selectDeptDetail" resultClass = "deptVO"> 
+		select deptno,dname,loc from test_dept where deptno = #deptno#
+	</select>
+	<delete id ="deptDAO.deleteDept">
+		delete from test_dept where deptno = #deptno#
+	</delete>
+	<update id ="deptDAO.updateDept">
+		update test_dept set dname =#dname#,loc=#loc# where deptno=#deptno#
+	</update>
+</sqlMap>

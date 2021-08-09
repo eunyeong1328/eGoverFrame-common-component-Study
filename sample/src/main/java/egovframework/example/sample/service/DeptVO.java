@@ -26,6 +26,4 @@ public class DeptVO {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
-	
-
 }
