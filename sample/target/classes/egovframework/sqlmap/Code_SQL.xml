@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace = "CodeSpace">
+	<!-- 두 개는 출력을 위한 존재들 -->		<!--JAVA의List, EgovMap는 DB 안에 목록을 담당한다.-->
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="CodeVO" type="egovframework.example.sample.service.CodeVO"/>
+									<!-- 행 하나를 담는 것!! -->
+									
+	<insert id ="codeDAO.insertCodes">
+	 INSERT INTO test11_codes(code,gid,name)
+	 		VALUES(code,#gid#,#name#) 
+	</insert>
+
+</sqlMap>
