@@ -25,3 +25,4 @@ public class CodeVO {
 		this.name = name;
 	}
 }
+

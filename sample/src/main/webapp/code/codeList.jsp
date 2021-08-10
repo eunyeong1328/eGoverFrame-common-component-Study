@@ -22,31 +22,51 @@ th,td{
 	padding:5px;
 }
 </style>
+
+<script language="javascript">
+function fn_delete(code){
+	if(confirm("정말 삭제하시겠습니까?")){
+		location = "codeDelete.do?code="+code;
+	}	
+}
+
+function fn_update(code){
+	location="codeModifyWrite.do?code="+code;
+}
+	
+</script>
 <body>
 <table>
 	<caption>코드목록</caption>
+	<!-- 코드관리: 총 개수 출력  width:100%-->
+	<div style = "width:100%"; text-align:left;">Total : ${resultTotal } 개 </div>
 	<colgroup>
-		<col width = "20%"/>
-		<col width = "40%"/>
-		<col width = "40%"/>
+		<col width = "10%"/>
+		<col width = "30%"/>
+		<col width = "30%"/>
+		<col width = "30%"/>
 	</colgroup>
 	<tr>
 		<th>번호</th>
 		<th>그룹명</th>
 		<th>코드명</th>
+		<th>구분</th>
 	</tr>
 	
 	<!--jstl로 변수 만드는 법!! 변환 타입이 없다!!  -->
 	<c:set var="count" value = "1" />
 	<c:forEach var ="result" items = "${resultList}" varStatus = "state">
-		<tr>
+		<tr align = "center">
 			<td><c:out value ="${count }" /></td>
 			<td>${result.gid }</td>
 			<td>${result.name }</td>
+			<td>
+			<button type="button" onclick="fn_update('${result.code}')">수정</button>
+			<button type="button" onclick="fn_delete('${result.code}')">삭제</button>
+			</td>
 		</tr>
 		<c:set var = "count" value= "${count+1}"/>
 	</c:forEach> 
 </table>
-
 </body>
 </html>

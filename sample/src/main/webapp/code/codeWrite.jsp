@@ -16,17 +16,6 @@ th,td{
 	padding:5px;
 }
 </style>
-<script>
-/* fn_submit : 사용자함수를 만들었음  */
-function fn_submit(){
-	if(document.frm.name.value == ""){
-		alert("코드명을 입력해주세요")
-		document.frm.name.focus();
-		return false;
-	}
-	document.frm.submit();
-}
-</script>
 <body>
 <form name = "frm" method ="post" action="codeWriteSave.do">
 <table>

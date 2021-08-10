@@ -18,6 +18,24 @@
 			,name
 		FROM test11_codes
 		 ORDER BY gid ASC 
+	</select>
+											<!-- Integer타입으로 보낸다.↓.↓ -->
+ 	<select id="codeDAO.selectCodesCount" resultClass="java.lang.Integer">
+ 	 select count(*) cnt from test11_codes;
  	</select>
+ 	
+ 	<delete id="codeDAO.deleteCodes">
+ 		 delete from test11_codes where code = #code#;
+ 	</delete>
+ 	
+ 	<select id="codeDAO.selectCodeDetail" resultClass = "CodeVO">
+ 		select code,gid,name from test11_codes where code= #code#;
+ 	</select>
+ 	
+ 	<update id = "codeDAO.updateCodes">
+ 		update test11_codes set gid = #gid#, name =#name#
+		where code=#code#;
+ 	</update>
+ 	
 
 </sqlMap>

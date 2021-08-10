@@ -25,4 +25,24 @@ public class CodeServiceImpl implements CodeService{
 	public List<?> selectCodesList(CodeVO vo) throws Exception {
 		return codeDAO.selectCodesList(vo);
 	}
+
+	@Override
+	public int selectCodesCount(CodeVO vo) throws Exception {
+		return codeDAO.selectCodesCount(vo);
+	}
+
+	@Override
+	public int deleteCodes(int code) throws Exception {
+		return codeDAO.deleteCodes(code);
+	}
+
+	@Override
+	public CodeVO selectCodesDetail(int code) throws Exception {
+		return codeDAO.selectCodesDetail(code);
+	}
+
+	@Override
+	public int updateCodes(CodeVO vo) throws Exception {
+		return codeDAO.codeModifyWrite(vo);
+	}
 }
