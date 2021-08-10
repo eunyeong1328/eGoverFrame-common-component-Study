@@ -36,6 +36,5 @@
  		update test11_codes set gid = #gid#, name =#name#
 		where code=#code#;
  	</update>
- 	
-
+ 
 </sqlMap>
