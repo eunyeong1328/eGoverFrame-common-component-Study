@@ -35,7 +35,7 @@
         	<td>${result.loc }</td>
         </tr>
     </c:forEach>
-	
+
 </table>
 
 </body>

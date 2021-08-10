@@ -1,8 +1,11 @@
 package egovframework.example.sample.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import egovframework.example.sample.service.CodeService;
@@ -33,5 +36,12 @@ public class CodeController {
 		}
 		//UPDATE, DELETE 숫자 형태로 return(결과)를 알려준다.-->실패 시(저장 안될 시)= 0
 		return "redirect:codeList.do"; //이 페이지로 이동
+	}
+	
+	@RequestMapping(value = "/codeList.do")
+	public String selectCodeList(CodeVO vo,ModelMap model) throws Exception{
+		List<?> list = codeService.selectCodesList(vo);
+		model.addAttribute("resultList",list);
+		return "code/codeList";
 	}
 }
