@@ -1,5 +1,4 @@
-# eGoverFrame-common-component-practice
-
+# eGoverFrame-common-component-Study
 전자정부프레임워크를 혼자 공부하는 내용을 기록하는 공간
 
 🖋 Portfolio Notion
