@@ -32,7 +32,7 @@
 <script>
 		
 	function fn_submit(){
-		if( ${"#title"}.val() == ""){
+		if( $("#title").val() == ""){
 			alert("제목을 입력해주세요");
 		}
 		
