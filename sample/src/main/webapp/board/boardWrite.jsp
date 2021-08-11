@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 등록 화면</title>
+<script src="/sample/script/jquery-1.12.4.js"></script>
+<script src="/sample/script/jquery-ui.js"></script>
 </head>
 <style>
 	body{
@@ -22,13 +24,21 @@
 	width:98%;
 	}
 	.textarea{
-	width:98%;
+	width:98%; 
 	height:70px;
 	}
 </style>
 
 <script>
+		
 	function fn_submit(){
+		if( ${"#title"}.val() == ""){
+			alert("제목을 입력해주세요");
+		}
+		
+		//# = jqeury에서 id값(title이라는 요소) 
+		
+		/*  [자바 스크립트 형식]
 		if(document.frm.title.value == "" ){
 			alert("제목을 입력해주세요");
 			document.frm.title.focus();
@@ -36,15 +46,14 @@
 		}
 		if(document.frm.pass.value == "" ){
 			alert("암호를 입력해주세요");
-			document.frm.title.focus();
+			document.frm.pass.focus();
 			return false;
-		}
+		} */
 		//document.frm.submit(); //동기전송방식(움직임,java로 데이터전송)
 		
 	}
 </script>
 <body>
-게시판 등록 화면
 <form name ="frm" id="frm method = "post" action = "boardWriteSave.do">
 <table>
 	<caption>게시판 등록</caption>
@@ -53,7 +62,7 @@
 		<td width="80%"><input type = "text" name = "title" id = "title" class = "input1"></td>
 	</tr>
 	<tr>
-		<th><label for="pass">암호</th>
+		<th><label for="pass">암호</label></th>
 		<td><input type = "password" name = "pass" id = "pass"></td>
 	</tr>
 	<tr>
@@ -66,7 +75,7 @@
 		
 	</tr>
 	<tr>
-		<th colspan ="2">			<!-- return false 시 action이 실행이 되지 않는다. -->
+		<th colspan ="2">			
 			<button type = "submit" onclick = "fn_submit(); return false;">저장</button>
 			<button type = "resest">취소</button>
 		</th>
