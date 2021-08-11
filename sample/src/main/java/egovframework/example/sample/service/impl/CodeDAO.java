@@ -34,7 +34,4 @@ public class CodeDAO extends EgovAbstractDAO{
 	public int codeModifyWrite(CodeVO vo) {
 		return (int) update("codeDAO.updateCodes",vo);
 	}
-
-
-
 }
