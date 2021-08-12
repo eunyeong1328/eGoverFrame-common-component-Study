@@ -41,20 +41,22 @@ public class BoardController {
 	public String selectNBoardList(BoardVO vo,ModelMap model) throws Exception{
 		//페이징 처리 
 		
+		int unit = 5;
+		
 		// 총 데이터 갯수 
 		int total = boardService.selectNBoardTotal(vo);
 		
 		//정수/정수 = 정수값 이어서 double로 변환해서 실수타입의 결과(1.2)를 얻기 위함
 		// (double)12/10 -> ceil(1.2):올림 -> Integer(2.0) -> 2페이지
-		int totalPage = (int) Math.ceil((double)total/10);
+		int totalPage = (int) Math.ceil((double)total/unit);
 		
 		//사용자가 보려는 페이지
 		int viewPage = vo.getViewPage(); 
 		//1-> 1,10  //2-> 11,20  //3-> 21,30
 		//startIndex : (1-1)*10 + 1 -> 1
 		//startIndex : (2-1)*10 + 1 -> 11
-		int startIndex = (viewPage- 1)*10+1;
-		int endIndex = startIndex + (10 - 1);
+		int startIndex = (viewPage- 1)*unit+1;
+		int endIndex = startIndex + (unit - 1);
 		vo.setStartIndex(startIndex);
 		vo.setEndIndex(endIndex);
 		
@@ -64,7 +66,7 @@ public class BoardController {
 		int p2 = total - 10;
 		int p3 = total - 20;
 		int p4 = total - 30; */
-		int startRowNo = total - (viewPage - 1)*10;  
+		int startRowNo = total - (viewPage - 1)*unit;  
 		
 		System.out.println(totalPage);
 		
