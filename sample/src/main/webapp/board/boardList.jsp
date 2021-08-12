@@ -48,7 +48,7 @@ th, td {
 	<c:set var = "rownum" value = "1"  />
 	<c:forEach var="result" items="${ resultList}">
 	<tr align = "center">
-		<td><c:out value = "${cnt }"/></td>
+		<td><c:out value = "${rownum }"/></td>
 		<td><c:out value ="${result.title }"/></td>
 		<td><c:out value = "${result.name }"/></td>
 		<td><c:out value = "${result.rdate }"/></</td>
@@ -57,6 +57,10 @@ th, td {
 		<c:set var = "rownum" value = "${rownum+1 }"/> 
 	</c:forEach>
 </table>
+<!-- div는 스타일을 지정해 주는 코드이다. -->
+<div style = width:600px; margin-top:5px; text-align:left;">
+	<button type ="button" onclick = "location='boardWrite.do'">글쓰기</button>
+</div>
 
 </body>
 </html>
