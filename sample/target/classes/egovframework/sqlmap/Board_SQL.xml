@@ -23,11 +23,11 @@
 						FROM  test11_board, (SELECT @ROWNUM :=0) as ROWCOLUMN
 				    	ORDER BY unq DESC) a ) b )
 					WHERE
-				 		rownum >= 11 and rownum <= 20
+				 		rownum >= #startIndex# and rownum <= #endIndex#
 		]]>
 	</select>
 	
-	<select id="boardDAO.selectNBoardTotal" resultClass ="java.long.Integer">
+	<select id="boardDAO.selectNBoardTotal" resultClass ="java.lang.Integer">
 		SELECT count(*) total FROM test11_board
 	</select>
 	

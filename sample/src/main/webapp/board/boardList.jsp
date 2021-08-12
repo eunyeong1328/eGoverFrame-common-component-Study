@@ -61,6 +61,12 @@ th, td {
 		<c:set var = "rownum" value = "${rownum+1 }"/> 
 	</c:forEach>
 </table>
+<div style="width:800px; margin-top:5px; text-align:center;">
+	<c:forEach var="i" begin = "1" end="${totalPage}">
+	<!-- 페이지 번호를 클릭 했을 때 viewPage이름의 값을 Controller로 넘긴다.  -->
+		<a href ="boardList.do?viewPage=${i }">${i }</a> 
+	</c:forEach>
+</div>
 <!-- div는 스타일을 지정해 주는 코드이다. -->
 <div style = "width:800px; margin-top:5px; text-align:right; ">
 	<button type ="button" onclick = "location='boardWrite.do'">글쓰기</button>
