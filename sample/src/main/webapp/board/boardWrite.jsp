@@ -67,7 +67,7 @@ function fn_submit() {
 			success:function(data){ //Controller에서 매개변수로 값이 넘어옴
 				if(data == "ok" ){
 					alert("저장 완료");
-					//location = "boardList.do";
+					location = "boardList.do";
 				}else{
 					alert("저장 실패")
 				}
