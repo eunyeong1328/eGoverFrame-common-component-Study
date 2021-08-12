@@ -58,7 +58,7 @@ th, td {
 	</c:forEach>
 </table>
 <!-- div는 스타일을 지정해 주는 코드이다. -->
-<div style = width:600px; margin-top:5px; text-align:left;">
+<div style = "width:800px; margin-top:5px; text-align:right; ">
 	<button type ="button" onclick = "location='boardWrite.do'">글쓰기</button>
 </div>
 
