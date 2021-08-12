@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 등록 화면</title>
-<script src="/sample/script/jquery-1.12.4.js"></script>
-<script src="/sample/script/jquery-ui.js"></script>
+<script src="script/jquery-1.12.4.js"></script>
+<script src="script/jquery-ui.js"></script>
 </head>
 <style>
 body {
-	font-size: 9pt;
+	font-size: 9pt;df',0,now()); 
 }
 
 table {
@@ -54,23 +54,33 @@ function fn_submit() {
 			return false;
 		}
 		$("#pass").val( $.trim( $("#pass").val() ) );
-		//# = jqeury에서 id값(title이라는 요소) 
-		/*  [자바 스크립트 형식]
-		if(document.frm.title.value == "" ){
-			alert("제목을 입력해주세요");
-			document.frm.title.focus();
-			return false;
-		}
-		if(document.frm.pass.value == "" ){
-			alert("암호를 입력해주세요");
-			document.frm.pass.focus();
-			return false;
-		} */
-		//document.frm.submit(); //동기전송방식(움직임,java로 데이터전송)
+		
+		//form 데이터
+		var formData = $("#frm").serialize();//serialize()는 form 그 자체
+		
+		//ajax : 비동기 전송방식의 기능을 가지고 있는 jquery의 함수
+		$.ajax({  
+			type:"POST",
+			data:formData,
+			url:"boardWriteSave.do",
+			dataType:"text", //리턴 타입
+			success:function(data){ //Controller에서 매개변수로 값이 넘어옴
+				if(data == "ok" ){
+					alert("저장 완료");
+					//location = "boardList.do";
+				}else{
+					alert("저장 실패")
+				}
+			},
+			error: function(){ // 장애발생
+				alert("오류발생");
+			}
+		});
+		
 	}
 </script>
 <body>
-	<form name="frm" id="frm method = " post" action="boardWriteSave.do">
+	<form id="frm">
 		<table>
 			<caption>게시판 등록</caption>
 			<tr>
@@ -89,13 +99,13 @@ function fn_submit() {
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea type="content" id="content" class=textarea></textarea></td>
+				<td><textarea name="content" id="content"></textarea></td>
 
 			</tr>
 			<tr>
 				<th colspan="2">
 					<button type="submit" onclick="fn_submit(); return false;">저장</button>
-					<button type="resest">취소</button>
+					<button type="reset">취소</button>
 				</th>
 			</tr>
 

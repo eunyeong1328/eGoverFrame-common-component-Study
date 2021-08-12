@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace = "BoardSpace">
+	<!-- 두 개는 출력을 위한 존재들 -->		<!--JAVA의List구조, EgovMap는 DB 안에 목록을 담당한다.-->
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="boardVO" type="main.service.BoardVO"/>
+									<!-- 행 하나를 담는 것!! -->
+									
+	<insert id ="boardDAO.insertNBoard">
+	 INSERT INTO test11_board(title,pass,name,content,hits,rdate)
+	 		VALUES(#title:VARCHAR#,#pass:VARCHAR#,#name:VARCHAR#,#content:VARCHAR#,0,sysdate()) 
+	</insert>
+	
+	<!-- List / HashMap -->
+	<select id ="boardDAO.selectNBoardList" resultClass = "egovMap">
+		SELECT title,
+				name,
+				hits,
+				DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate
+		FROM 
+				test11_board
+		ORDER BY unq DESC
+	</select>
+	
+	
+ 
+</sqlMap>
