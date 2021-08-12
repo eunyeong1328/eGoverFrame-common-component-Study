@@ -48,7 +48,8 @@ public class BoardController {
 		// (double)12/10 -> ceil(1.2):올림 -> Integer(2.0) -> 2페이지
 		int totalPage = (int) Math.ceil((double)total/10);
 		
-		int viewPage = vo.getViewPage(); //사용자가 보려는 페이지
+		//사용자가 보려는 페이지
+		int viewPage = vo.getViewPage(); 
 		//1-> 1,10  //2-> 11,20  //3-> 21,30
 		//startIndex : (1-1)*10 + 1 -> 1
 		//startIndex : (2-1)*10 + 1 -> 11
@@ -57,11 +58,20 @@ public class BoardController {
 		vo.setStartIndex(startIndex);
 		vo.setEndIndex(endIndex);
 		
+		//행 번호 total -> 34 (4 Page)
+		// 1(p)-> 34~25 , 2(p) -> 24~15 , 3(p) -> 14~5, 4(p) -> 4~1
+		/* int p1 = total - 0;
+		int p2 = total - 10;
+		int p3 = total - 20;
+		int p4 = total - 30; */
+		int startRowNo = total - (viewPage - 1)*10;  
+		
 		System.out.println(totalPage);
 		
 		List<?> list = boardService.selectNBoardList(vo);
 		System.out.println("list: " + list);
 		
+		model.addAttribute("rowNumber",startRowNo);
 		model.addAttribute("total",total);
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("resultList",list);

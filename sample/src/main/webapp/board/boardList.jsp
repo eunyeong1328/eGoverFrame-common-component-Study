@@ -49,16 +49,17 @@ th, td {
 		<th  width = "15%">등록일</th>
 		<th  width = "15%">조회수</th>
 	</tr>
-	<c:set var = "rownum" value = "1"  />
-	<c:forEach var="result" items="${ resultList}">
+	<c:set var = "rownum" value = "${rowNumber }"  />
+	
+	<c:forEach var="result" items="${resultList}">
 	<tr align = "center">
 		<td><c:out value = "${rownum }"/></td>
 		<td><c:out value ="${result.title }"/></td>
 		<td><c:out value = "${result.name }"/></td>
-		<td><c:out value = "${result.rdate }"/></</td>
-		<td><c:out value = "${result.hits }"/></</td>
+		<td><c:out value = "${result.rdate }"/></td>
+		<td><c:out value = "${result.hits }"/></td>
 	</tr>
-		<c:set var = "rownum" value = "${rownum+1 }"/> 
+		<c:set var = "rownum" value = "${rownum-1 }"/> 
 	</c:forEach>
 </table>
 <div style="width:800px; margin-top:5px; text-align:center;">
