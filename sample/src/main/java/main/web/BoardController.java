@@ -39,9 +39,22 @@ public class BoardController {
 	
 	@RequestMapping("/boardList.do")
 	public String selectNBoardList(BoardVO vo,ModelMap model) throws Exception{
+		//페이징 처리 
+		
+		// 총 데이터 갯수 
+		int total = boardService.selectNBoardTotal(vo);
+		
+		//정수/정수 = 정수값 이어서 double로 변환해서 실수타입의 결과(1.2)를 얻기 위함
+		// (double)12/10 -> ceil(1.2):올림 -> Integer(2.0) -> 2페이지
+		int totalPage = (int) Math.ceil((double)total/10);
+		
 		List<?> list = boardService.selectNBoardList(vo);
 		System.out.println("list: " + list);
+		
+		model.addAttribute("total",total);
+		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("resultList",list);
+		
 		return"board/boardList";
 	}
 }

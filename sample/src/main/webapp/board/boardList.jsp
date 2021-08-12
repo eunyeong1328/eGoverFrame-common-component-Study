@@ -37,6 +37,10 @@ th, td {
 </style>
 <body>
 <table>
+	<caption>
+		<div>일반게시판 목록</div>
+		<div>Total: ${total }</div>
+	</caption>
 <!-- 번호, 제목, 글쓴이, 등록일, 조회수 -->
 	<tr>
 		<th width = "15%" >번호</th>

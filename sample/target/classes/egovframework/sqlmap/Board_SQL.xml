@@ -13,15 +13,23 @@
 	
 	<!-- List / HashMap -->
 	<select id ="boardDAO.selectNBoardList" resultClass = "egovMap">
-		SELECT title,
-				name,
-				hits,
-				DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate
-		FROM 
-				test11_board
-		ORDER BY unq DESC
+		<![CDATA[
+			SELECT b.* FROM (
+				(SELECT @ROWNUM := @ROWNUM+1 as rownum, a.* FROM(
+						SELECT  title,
+								name,
+								hits,
+								DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate
+						FROM  test11_board, (SELECT @ROWNUM :=0) as ROWCOLUMN
+				    	ORDER BY unq DESC) a ) b )
+					WHERE
+				 		rownum >= 11 and rownum <= 20
+		]]>
 	</select>
 	
+	<select id="boardDAO.selectNBoardTotal" resultClass ="java.long.Integer">
+		SELECT count(*) total FROM test11_board
+	</select>
 	
  
 </sqlMap>

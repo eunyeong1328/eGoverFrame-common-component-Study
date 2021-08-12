@@ -11,5 +11,9 @@ public interface BoardService {
 	 * 일반게시판 화면목록
 	 */
 	 public List<?> selectNBoardList(BoardVO vo) throws Exception;
-
+	 /*
+	  *  Total 갯수 얻기
+	  */
+	 public int selectNBoardTotal(BoardVO vo) throws Exception;
+ 
 }
