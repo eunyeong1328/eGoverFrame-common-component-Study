@@ -52,6 +52,9 @@ public class BoardController {
 		
 		//사용자가 보려는 페이지
 		int viewPage = vo.getViewPage(); 
+		if(viewPage> totalPage || viewPage < 1) {
+			viewPage = 1;
+		}
 		//1-> 1,10  //2-> 11,20  //3-> 21,30
 		//startIndex : (1-1)*10 + 1 -> 1
 		//startIndex : (2-1)*10 + 1 -> 11
