@@ -79,7 +79,9 @@ th, td {
 		<c:forEach var="result" items="${resultList}">
 			<tr align="center">
 				<td><c:out value="${rownum }" /></td>
-				<td><c:out value="${result.title }" /></td>
+				<td align = "">
+					<a href="boardDetail.do?unq=${result.unq }"><c:out value="${result.title }" /></a>
+				</td>
 				<td><c:out value="${result.name }" /></td>
 				<td><c:out value="${result.rdate }" /></td>
 				<td><c:out value="${result.hits }" /></td>

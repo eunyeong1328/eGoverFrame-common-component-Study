@@ -18,7 +18,8 @@
 						SELECT  title,
 								name,
 								hits,
-								DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate
+								DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate,
+								unq
 						FROM  test11_board, (SELECT @ROWNUM :=0) as ROWCOLUMN
 						<isNotNull property="searchGubun">
 							<isNotNull property = "searchText">
@@ -37,5 +38,16 @@
 				WHERE $searchGubun$ LIKE '%$searchText$%'	
 			</isNotNull>
 		</isNotNull>
+	</select>
+	
+	<select id = "boardDAO.selectNBoardDetail" resultClass = "boardVO">
+		SELECT  title,
+				name,
+				content,
+				hits,
+				DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate,
+				unq 
+				FROM test11_board
+				WHERE unq = '$unq$'
 	</select>
 </sqlMap>
