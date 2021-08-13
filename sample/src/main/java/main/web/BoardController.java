@@ -80,10 +80,10 @@ public class BoardController {
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("resultList",list);
 		
-		return"board/boardList";
+		return"board/boardList";//<-화면 깜빡거림이 있기 때문에 <동기방식>
 	}
 	
-	@RequestMapping("boardDetail.do") // [ 상세보기 ]
+	@RequestMapping("/boardDetail.do") // [ 상세보기 ]
 	public String selectNBoardDetail(BoardVO vo, ModelMap model) throws Exception{
 		/*
 		 * 조회수 증가
@@ -91,8 +91,24 @@ public class BoardController {
 		boardService.updateNBoardHits(vo.getUnq());
 		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
 		String content = boardVO.getContent(); // \n
-		boardVO.setContent(content.replace("\\n", "<br />")); 
+		boardVO.setContent(content.replace("\n", "<br>") ); 
 		model.addAttribute("boardVO",boardVO);
 		return "board/boardDetail";
+	}
+	
+	@RequestMapping("/boardModifyWrite.do")//   [ 수정하기 ]
+	public String selectNBoardModfiyWrite(BoardVO vo, ModelMap model) throws Exception{
+		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());//상세보기
+		model.addAttribute("vo",boardVO);
+		return "board/boardModifyWrite";
+	}
+	
+	@RequestMapping("/boardModifySave.do")//  [수정완료 저장버튼]
+	@ResponseBody //비동기 전송방식으로  화면에 데이터 전송 
+	//↑↑↑ 깜빡거림이 없기 때문에 비동기 방식
+	public String updateNBoard(BoardVO vo) throws Exception{
+		
+		int result = boardService.updateNBoard(vo);
+		return result+"";
 	}
 }

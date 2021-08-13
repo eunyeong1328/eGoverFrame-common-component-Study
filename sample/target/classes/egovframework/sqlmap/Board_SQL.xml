@@ -48,11 +48,19 @@
 				DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate,
 				unq 
 				FROM test11_board
-				WHERE unq = '$unq$'
+				WHERE unq = #unq#
 	</select>
 	
 	<update id = "boardDAO.updateNBoardHits">
-		update test11_board set HITS= HITS +1
-		where UNQ = #UNQ#;
+		UPDATE test11_board SET HITS= HITS +1
+		WHERE UNQ = #UNQ#;
+	</update>
+	
+	<update id = "boardDAO.updateNBoard">
+		UPDATE test11_board SET
+		title = #title#,
+		name = #name#,
+		content = #content# 
+		WHERE unq = #unq# 
 	</update>
 </sqlMap>

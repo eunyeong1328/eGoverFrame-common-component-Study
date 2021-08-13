@@ -42,4 +42,9 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.updateNBoardHits(unq);
 	}
 
+	@Override //상속받은 클래스를 재구성한 오버라이딩(똑같은 기법으로 다시 만드는 방법)
+	public int updateNBoard(BoardVO vo) throws Exception {
+		return boardDAO.updateNBoard(vo);
+	}
+
 }

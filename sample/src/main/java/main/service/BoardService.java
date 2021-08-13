@@ -23,5 +23,9 @@ public interface BoardService {
 	  *  조회수 증가
 	  */
 	 public int updateNBoardHits(int unq) throws Exception;
+	 /*
+	  * 수정처리
+	  */
+	 public int updateNBoard(BoardVO vo) throws Exception; 
  
 }
