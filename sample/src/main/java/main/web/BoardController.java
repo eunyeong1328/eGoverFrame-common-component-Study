@@ -24,7 +24,7 @@ public class BoardController {
 		return "board/boardWrite";
 	}
 	
-	@RequestMapping("/boardWriteSave.do") //  [화면 저장처리]
+	@RequestMapping("/boardWriteSave.do") //  [ 입력 저장처리 ]
 	@ResponseBody //비동기 전송방식으로  화면에 데이터 전송 
 	public String insertNBoard(BoardVO vo) throws Exception{
 		// result = null 정상실행시 null
@@ -37,7 +37,7 @@ public class BoardController {
 		return msg; //값 전달
 	}
 	
-	@RequestMapping("/boardList.do") //  [페이징 처리]
+	@RequestMapping("/boardList.do") //  [ 페이징 처리 ]
 	public String selectNBoardList(BoardVO vo,ModelMap model) throws Exception{
 		
 		int unit = 5;
@@ -83,9 +83,12 @@ public class BoardController {
 		return"board/boardList";
 	}
 	
-	@RequestMapping("boardDetail.do")
+	@RequestMapping("boardDetail.do") // [ 상세보기 ]
 	public String selectNBoardDetail(BoardVO vo, ModelMap model) throws Exception{
 		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
+		String content = boardVO.getContent(); // \n
+		boardVO.setContent(content.replace("\\n", "<br />"));
+		
 		model.addAttribute("boardVO",boardVO);
 		return "board/boardDetail";
 	}
