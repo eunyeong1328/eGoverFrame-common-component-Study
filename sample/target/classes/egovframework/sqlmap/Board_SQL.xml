@@ -32,5 +32,10 @@
 	
 	<select id="boardDAO.selectNBoardTotal" resultClass ="java.lang.Integer">
 		SELECT count(*) total FROM test11_board
+		<isNotNull property="searchGubun">
+			<isNotNull property = "searchText">
+				WHERE $searchGubun$ LIKE '%$searchText$%'	
+			</isNotNull>
+		</isNotNull>
 	</select>
 </sqlMap>
