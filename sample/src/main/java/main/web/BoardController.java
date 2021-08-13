@@ -85,10 +85,13 @@ public class BoardController {
 	
 	@RequestMapping("boardDetail.do") // [ 상세보기 ]
 	public String selectNBoardDetail(BoardVO vo, ModelMap model) throws Exception{
+		/*
+		 * 조회수 증가
+		 */
+		boardService.updateNBoardHits(vo.getUnq());
 		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
 		String content = boardVO.getContent(); // \n
-		boardVO.setContent(content.replace("\\n", "<br />"));
-		
+		boardVO.setContent(content.replace("\\n", "<br />")); 
 		model.addAttribute("boardVO",boardVO);
 		return "board/boardDetail";
 	}

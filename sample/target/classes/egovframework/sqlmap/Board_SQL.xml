@@ -50,4 +50,9 @@
 				FROM test11_board
 				WHERE unq = '$unq$'
 	</select>
+	
+	<update id = "boardDAO.updateNBoardHits">
+		update test11_board set HITS= HITS +1
+		where UNQ = #UNQ#;
+	</update>
 </sqlMap>

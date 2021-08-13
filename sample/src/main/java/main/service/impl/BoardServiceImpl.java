@@ -39,8 +39,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int updateNBoardHits(int unq) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.updateNBoardHits(unq);
 	}
 
 }
