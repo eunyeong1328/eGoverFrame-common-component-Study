@@ -13,23 +13,24 @@
 	
 	<!-- List / HashMap -->
 	<select id ="boardDAO.selectNBoardList" resultClass = "egovMap">
-		<![CDATA[
 			SELECT b.* FROM (
-				(SELECT @ROWNUM := @ROWNUM+1 as rownum, a.* FROM(
+				(SELECT @ROWNUM := @ROWNUM+1 as RN, a.* FROM(
 						SELECT  title,
 								name,
 								hits,
 								DATE_FORMAT(sysdate(),'%Y-%m-%d') as rdate
 						FROM  test11_board, (SELECT @ROWNUM :=0) as ROWCOLUMN
+						<isNotNull property="searchGubun">
+							<isNotNull property = "searchText">
+								WHERE $searchGubun$ LIKE '%$searchText$%'	
+							</isNotNull>
+						</isNotNull>
 				    	ORDER BY unq DESC) a ) b )
 					WHERE
-				 		rownum >= #startIndex# and rownum <= #endIndex#
-		]]>
+				 		RN <![CDATA[ >=]]> $startIndex$ and RN <![CDATA[ <=]]>  $endIndex$
 	</select>
 	
 	<select id="boardDAO.selectNBoardTotal" resultClass ="java.lang.Integer">
 		SELECT count(*) total FROM test11_board
 	</select>
-	
- 
 </sqlMap>
