@@ -68,4 +68,9 @@
 		SELECT count(*) FROM test11_board 
 		WHERE unq = #unq# AND pass = #pass#;
 	</select>
+	
+	<delete id ="boardDAO.deleteNBoard">
+		DELETE FROM test11_board
+		 WHERE unq = #unq# AND pass = #pass#;
+	</delete>
 </sqlMap>
