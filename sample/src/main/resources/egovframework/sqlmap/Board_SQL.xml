@@ -63,4 +63,9 @@
 		content = #content# 
 		WHERE unq = #unq# 
 	</update>
+	
+	<select id ="boardDAO.selectNBoardPass" resultClass = "java.lang.Integer">
+		SELECT count(*) FROM test11_board 
+		WHERE unq = #unq# AND pass = #pass#;
+	</select>
 </sqlMap>

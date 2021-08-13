@@ -91,7 +91,7 @@ public class BoardController {
 		boardService.updateNBoardHits(vo.getUnq());
 		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
 		String content = boardVO.getContent(); // \n
-		boardVO.setContent(content.replace("\n", "<br>") ); 
+		boardVO.setContent(content.replace("\n", "<br>") ); //줄바꿈
 		model.addAttribute("boardVO",boardVO);
 		return "board/boardDetail";
 	}
@@ -108,7 +108,13 @@ public class BoardController {
 	//↑↑↑ 깜빡거림이 없기 때문에 비동기 방식
 	public String updateNBoard(BoardVO vo) throws Exception{
 		
-		int result = boardService.updateNBoard(vo);
+		int result = 0;
+		int count = boardService.selectNBoardPass(vo); //int count = 1; 암호확인
+		if(count == 1) { //if문 안에 선언문은 들어갈 수 없다
+			result = boardService.updateNBoard(vo); // int result = 1; 수정처리
+		}else{
+			result = -1;
+		}
 		return result+"";
 	}
 }
