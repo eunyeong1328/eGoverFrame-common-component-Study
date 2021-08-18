@@ -56,7 +56,7 @@
 			dataType:"text", //성공 여부에 대해서 data를 text형태로 리턴
 			/* 전송 후 세팅 */
 			success:function(data){ //Controller에서 매개변수로 값이 넘어옴
-				if(data == "ok" ){
+				if(data == "ok"){
 					alert("저장 완료");
 					location = "loginWrite.do";
 				}else{
@@ -146,22 +146,22 @@ caption{
 	<tr>
 		<th><label for = "birth">생년월일</label></th>
 		<td>
-		<input type = "text" name ="birth" id = "birth" readonly>
+		<input type = "text" name ="birth" id = "birth">
 		</td>
 	</tr>
 	<tr>
 		<th><label for = "phone">연락처</label></th>
 		<td>
-		<input type = "text" name ="phone" id = "phone" readonly> (예: 010-1234-1234)
+		<input type = "text" name ="phone" id = "phone"> (예: 010-1234-1234)
 		</td>
 	</tr>
 	<tr>
 		<th><label for = "address">주소</label></th>
 		<td>
-		<input type = "text" name ="zipcode" id = "zipcode">
-		<button type ="button">우편번호 찾기</button>
-		<br>
-		<input type = "text" name= "address" id = "address">
+			<input type = "text" name ="zipcode" id = "zipcode">
+			<button type ="button">우편번호 찾기</button>
+			<br>
+			<input type = "text" name= "address" id = "address">
 		</td>
 	</tr>
 </table>

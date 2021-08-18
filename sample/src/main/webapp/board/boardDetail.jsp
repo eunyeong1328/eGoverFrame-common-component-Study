@@ -76,7 +76,7 @@ function fn_submit() {
 					alert("저장 완료");
 					location = "boardList.do";
 				}else{
-					alert("저장 실패")
+					alert("저장 실패");
 				}
 			},
 			error: function(){ // 장애발생
