@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import main.service.MemberService;
 import main.service.MemberVO;
 
 @Service("memberService")

@@ -1,6 +1,4 @@
-package main.service.impl;
-
-import main.service.MemberVO;
+package main.service;
 
 public interface MemberService {
 	/*

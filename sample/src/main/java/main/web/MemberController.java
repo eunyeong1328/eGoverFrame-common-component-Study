@@ -5,15 +5,16 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import main.service.MemberService;
 import main.service.MemberVO;
-import main.service.impl.MemberService;
 
 @Controller
 public class MemberController {
 	
+	//다른 클래스를 사용하려면 Resource 선언을 해야 한다.
 	@Resource(name = "memberService")
 	private MemberService memberService;
-	
+
 	/*
 	 * 회원등록화면
 	 */
