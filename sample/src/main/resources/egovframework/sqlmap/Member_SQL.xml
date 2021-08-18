@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace = "MemberSpace">
+	<!-- 두 개는 출력을 위한 존재들 -->		<!--JAVA의List구조, EgovMap는 DB 안에 목록을 담당한다.-->
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="MemberVO" type="main.service.MemberVO"/>
+									<!-- 행 하나를 담는 것!! -->
+									
+	<insert id = "memberDAO.insertMember">
+		INSERT into test11_member (userid,
+									pass,
+									name,
+									birth,
+									phone,
+									gender,
+									zipcode,
+									address)
+								VALUE(
+									#userid#,
+									#pass#,
+									#name#,
+									#birth#,
+									#phone#,
+									#gender#,
+									#zipcode#,
+									#address#)
+	</insert>
+
+</sqlMap>
