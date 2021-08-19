@@ -10,5 +10,17 @@
 		INSERT INTO test11_member(userid,pass,name,birth,phone,gender,zipcode,address)
 	 		VALUES(#userid:VARCHAR#,#pass:VARCHAR#,#name:VARCHAR#,#birth#,#phone:VARCHAR#,#gender:VARCHAR#,#zipcode:VARCHAR#,#address:VARCHAR#)
 	</insert>
+	
+	<select id = "memberDAO.selectMemberIdCheck" resultClass = "java.lang.Integer">
+		SELECT count(*) FROM test11_member
+		WHERE userid = #userid#
+	</select>
+	
+	<select id = "memberDAO.selectPostList" resultClass = "egovMap">
+		SELECT a1,a2,a3,a4,a5,a6,a7,a8
+		FROM test11_post
+		WHERE a4 LIKE'%' || #dong# ||  '%' 
+		   OR a5 LIKE '%' || #dong# ||  '%'
+	</select>
 
 </sqlMap>

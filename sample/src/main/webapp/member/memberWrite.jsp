@@ -19,6 +19,35 @@
       changeYear: true
     });
     
+    $("#btn_idcheck").click(function(){ 
+    	
+    	var userid = $.trim($("#userid").val()); //데이터 유효값
+    	if(userid == ""){
+    		alert("아이디를 입력해주세요");
+    		$("#userid").focus();
+    		return false;
+    	}
+    	//idcheck.do로 데이터 전송 - 비동기 전송 방식
+    	$.ajax({
+    		/* 전송 전 세팅 */
+			type:"POST",
+			data:"userid="+userid, //json타입으로 데이더 전송
+			url:"idcheck.do",
+			dataType:"text", //성공 여부에 대해서 data를 text형태로 리턴
+			/* 전송 후 세팅 */
+			success:function(data){ //controller에서 매개변수로 값이 넘어옴
+				if(data == "ok"){
+					alert("사용 가능한 아이디 입니다.");
+				}else{
+					alert("이미 사용 중인 아이디 입니다.")
+				}
+			},
+			error: function(){ // 장애발생(시스템 에러=서버에러)
+				alert("오류발생");
+			}
+    	});
+    });
+    
     $("#btn_submit").click(function(){//click, val은 jquery 함수이다.
     	var userid = $("#userid").val();
     	var pass = $("#pass").val();
@@ -121,7 +150,7 @@ caption{
 		<th><label for = "userid">아이디</label></th>
 		<td>	<!-- 초기 출력 시에 입력상자에 표현이 될 수 있도록  placeholder 속성 작성-->
 		<input type = "text" name ="userid" id = "userid" placeholder = "아이디입력">
-		<button type = "button">중복체크</button>
+		<button type = "button" id="btn_idcheck">중복체크</button>
 		</td>
 	</tr>
 	<tr>
