@@ -63,7 +63,6 @@ public class MemberController {
 	public String post2(String dong, ModelMap model) throws Exception{
 		List<?> list = memberService.selectPostList(dong);
 		model.addAttribute("resultList",list);
-		
 		return "member/post2";
 	}
 	

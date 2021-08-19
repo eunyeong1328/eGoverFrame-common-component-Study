@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
-    
+      
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +15,14 @@
     $( "#birth" ).datepicker({
       changeMonth: true,
       changeYear: true
+    });
+    
+    $("#btn_zipcode").click(function(){
+    	var w = 500;
+    	var h = 100;
+    	var url = "post1.do";
+    	//팝업창
+    	window.open(url,'zipcode','width='+w+ ",height="+h); //넓이나 높이는 임의로 조절할 것
     });
     
     $("#btn_idcheck").click(function(){ 
@@ -143,7 +149,7 @@ caption{
 	</tr>
 </table>
 
-<form id = "frm">
+<form name = "frm" id = "frm">
 <table>
 	<caption>회원가입 폼</caption>
 	<tr>
@@ -188,7 +194,7 @@ caption{
 		<th><label for = "address">주소</label></th>
 		<td>
 			<input type = "text" name ="zipcode" id = "zipcode">
-			<button type ="button">우편번호 찾기</button>
+			<button type ="button" id = "btn_zipcode">우편번호 찾기</button>
 			<br>
 			<input type = "text" name= "address" id = "address">
 		</td>
