@@ -51,6 +51,7 @@ th, td {
 }
 </style>
 <body>
+<%@include file="../include/topmenu.jsp" %>
 	<div class="div1">일반게시판 목록</div>
 	<div class="div2">Total: ${total }</div>
 	

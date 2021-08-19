@@ -3,6 +3,7 @@ package main.web;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -66,5 +67,31 @@ public class MemberController {
 		return "member/post2";
 	}
 	
+	@RequestMapping("/loginWrite.do")
+	public String loginWrite() {//db연동을 하지 않기 때문에 throws Exception안 해도 된다.
+		return "member/loginWrite";
+	}
 	
+	@RequestMapping("loginWriteSub.do")//비동기 방식으로 데이터가 넘어오면
+	@ResponseBody 						//다시 화면에 데이터를 결과 메세지로 보내야 한다.
+	public String loginProcessing(MemberVO vo, HttpSession session) throws Exception{
+											//session을 만들어주는 클래스
+		String message = "";
+		int count = memberService.selectMemberCount(vo);
+		System.out.println(count);
+		if(count == 1) {
+			//session 생성
+			session.setAttribute("SessionUserID", vo.getUserid());
+			//message 처리
+			message = "ok";
+		}
+		return message;
+	}
+	
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.removeAttribute("SessionUserID");
+		return "member/loginWrite";
+	}
 }
