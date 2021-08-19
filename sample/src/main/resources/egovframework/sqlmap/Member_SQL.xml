@@ -15,9 +15,9 @@
 		SELECT count(*) FROM test11_member
 		WHERE userid = #userid#
 	</select>
-	
+	<!-- SELECT concat('[',a1,']',' ',a2,' ',a3,' ',a4,' ',a5,' ',a6,' ',a7,' ',a8) AS addr -->
 	<select id = "memberDAO.selectPostList" resultClass = "egovMap">
-		SELECT concat('[',a1,']',' ',a2,' ',a3,' ',a4,' ',a5,' ',a6,' ',a7,' ',a8) AS addr
+		SELECT  concat('[',a1,']',' ',a2,' ',a3,' ',a4,' ',a5,' ',ifnull(a6, ''),' ',ifnull(a7,'*'),' ',a8) as addr
 		FROM test11_post
 		WHERE a4 LIKE '%' || #dong# ||  '%' 
 		   OR a5 LIKE '%' || #dong# ||  '%'
