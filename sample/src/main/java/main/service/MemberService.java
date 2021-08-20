@@ -19,5 +19,6 @@ public interface MemberService {
 	 * 로그인 데이터 확인
 	 */
 	public int selectMemberCount(MemberVO vo) throws Exception;
-
 }
+
+
